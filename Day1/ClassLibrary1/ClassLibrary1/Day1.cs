@@ -1,6 +1,6 @@
 ﻿namespace ClassLibrary1
 {
-    public static class Class1
+    public static class Day1
     {
         public static int GetAnswer1(string input)
         {

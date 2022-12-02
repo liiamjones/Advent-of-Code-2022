@@ -27,7 +27,7 @@ namespace TestProject1
 9000
 
 10000";
-            var output = Class1.GetAnswer1(input);
+            var output = Day1.GetAnswer1(input);
 
             output.Should().Be(24000);
         }
@@ -2301,7 +2301,7 @@ namespace TestProject1
 1159
 1136
 2883";
-            var output = Class1.GetAnswer1(input);
+            var output = Day1.GetAnswer1(input);
 
             output.Should().Be(69912);
         }
