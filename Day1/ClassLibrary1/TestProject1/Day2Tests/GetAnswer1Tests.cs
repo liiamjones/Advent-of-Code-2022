@@ -2521,7 +2521,7 @@ B Z
 B Z";
             var output = Day2.GetAnswer1(input);
 
-            output.Should().Be(15);
+            output.Should().Be(15422);
         }
     }
 }

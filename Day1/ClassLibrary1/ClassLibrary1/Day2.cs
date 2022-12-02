@@ -18,6 +18,56 @@ namespace ClassLibrary1
                         ));
         }
 
+        public static int GetAnswer2(string input)
+        {
+            return input.Split(Environment.NewLine)
+                .Sum(x => (
+                        (int)CalculateMove(GetMove(x[0]), GetDesiredResult(x[2])) +
+                        (int)GetDesiredResult(x[2])
+                        ));
+        }
+
+        private static Move CalculateMove(Move oponent, Result desiredResult)
+        {
+            if (oponent == Move.Rock)
+            {
+                switch (desiredResult)
+                {
+                    case Result.Lose:
+                        return Move.Scisors;
+                    case Result.Draw:
+                        return Move.Rock;
+                    case Result.Win:
+                        return Move.Paper;
+                }
+            }
+            if (oponent == Move.Paper)
+            {
+                switch (desiredResult)
+                {
+                    case Result.Lose:
+                        return Move.Rock;
+                    case Result.Draw:
+                        return Move.Paper;
+                    case Result.Win:
+                        return Move.Scisors;
+                }
+            }
+            if (oponent == Move.Scisors)
+            {
+                switch (desiredResult)
+                {
+                    case Result.Lose:
+                        return Move.Paper;
+                    case Result.Draw:
+                        return Move.Scisors;
+                    case Result.Win:
+                        return Move.Rock;
+                }
+            }
+            throw new ArgumentOutOfRangeException("Not a valid Move/Result combination");
+        }
+
 
         private static Result GetResult(Move oponent, Move me)
         {
@@ -76,6 +126,20 @@ namespace ClassLibrary1
                     return Move.Scisors;
                 case 'Z':
                     return Move.Scisors;
+            }
+            throw new ArgumentOutOfRangeException(nameof(input));
+        }
+
+        private static Result GetDesiredResult(char input)
+        {
+            switch (input)
+            {
+                case 'X':
+                    return Result.Lose;
+                case 'Y':
+                    return Result.Draw;
+                case 'Z':
+                    return Result.Win;
             }
             throw new ArgumentOutOfRangeException(nameof(input));
         }
